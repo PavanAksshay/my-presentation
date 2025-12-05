@@ -15,6 +15,8 @@
 
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/monokai.css">
+
+	<!-- This presentation uses RevealJS fragments for animations throughout multiple slides -->
 </head>
 
 <body>
@@ -41,12 +43,12 @@
 
 						Financial modeling combines:
 						
-						- **Quantitative Analysis** - Using mathematical models
-						- **Data Science** - Leveraging large datasets
-						- **Machine Learning** - Predictive analytics
-						- **Risk Management** - Portfolio optimization
+						- **Quantitative Analysis** - Using mathematical models <!-- .element: class="fragment fade-in" -->
+						- **Data Science** - Leveraging large datasets <!-- .element: class="fragment fade-in" -->
+						- **Machine Learning** - Predictive analytics <!-- .element: class="fragment fade-in" -->
+						- **Risk Management** - Portfolio optimization <!-- .element: class="fragment fade-in" -->
 
-						> "The goal is to make data-driven financial decisions"
+						> "The goal is to make data-driven financial decisions" <!-- .element: class="fragment fade-up" -->
 					</textarea>
 				<aside class="notes">
 					This slide introduces the core concepts. Financial modeling is essential for modern investment
@@ -55,8 +57,8 @@
 				</aside>
 			</section>
 
-			<!-- Slide with Fragments -->
-			<section>
+			<!-- Slide with Fragments - Explicit Fragment Animations -->
+			<section data-fragment-index="0">
 				<h2>Key Financial Metrics</h2>
 				<p class="fragment fade-in">Net Present Value (NPV)</p>
 				<p class="fragment fade-up">Internal Rate of Return (IRR)</p>
@@ -224,16 +226,16 @@ def portfolio_beta(portfolio_returns, market_returns):
 			<!-- Markdown Slide with Code -->
 			<section data-markdown>
 				<textarea data-template>
-						## Machine Learning in Finance
+						## Machine Learning in Finance <!-- .element: class="fragment fade-in" -->
 
-						Common applications:
+						Common applications: <!-- .element: class="fragment fade-in" -->
 
-						- **Algorithmic Trading** - Automated trading strategies
-						- **Credit Risk Assessment** - Loan approval systems
-						- **Fraud Detection** - Anomaly detection
-						- **Price Prediction** - Stock and commodity forecasting
+						- **Algorithmic Trading** - Automated trading strategies <!-- .element: class="fragment fade-in" -->
+						- **Credit Risk Assessment** - Loan approval systems <!-- .element: class="fragment fade-in" -->
+						- **Fraud Detection** - Anomaly detection <!-- .element: class="fragment fade-in" -->
+						- **Price Prediction** - Stock and commodity forecasting <!-- .element: class="fragment fade-in" -->
 
-						```python
+						```python <!-- .element: class="fragment fade-up" -->
 						from sklearn.ensemble import RandomForestRegressor
 						
 						model = RandomForestRegressor(n_estimators=100)
@@ -275,10 +277,14 @@ def portfolio_beta(portfolio_returns, market_returns):
 		// More info about initialization & config:
 		// - https://revealjs.com/initialization/
 		// - https://revealjs.com/config/
+		// Initialize RevealJS with fragments enabled
+		// Fragments are used throughout the presentation for animations
 		Reveal.initialize({
 			hash: true,
 			fragments: true,
 			fragmentInURL: true,
+			controls: true,
+			progress: true,
 			math: {
 				mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
 				config: 'TeX-AMS_HTML-full'
