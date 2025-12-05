@@ -22,11 +22,11 @@
 		<div class="slides">
 			<!-- Title Slide -->
 			<section>
-				<h1>Financial Analysis & Data Science</h1>
-				<h3>A Comprehensive Overview</h3>
-				<p>
+				<h1 class="fragment fade-in">Financial Analysis & Data Science</h1>
+				<h3 class="fragment fade-up">A Comprehensive Overview</h3>
+				<p class="fragment fade-in">
 					<strong>Presented by:</strong><br>
-				<h4>24f2002734@ds.study.iitm.ac.in</h4>
+				<h4 class="fragment highlight-blue">24f2002734@ds.study.iitm.ac.in</h4>
 				</p>
 				<aside class="notes">
 					Welcome everyone! Today we'll explore financial analysis through the lens of data science.
@@ -59,9 +59,10 @@
 			<section>
 				<h2>Key Financial Metrics</h2>
 				<p class="fragment fade-in">Net Present Value (NPV)</p>
-				<p class="fragment fade-in">Internal Rate of Return (IRR)</p>
-				<p class="fragment fade-in">Sharpe Ratio</p>
+				<p class="fragment fade-up">Internal Rate of Return (IRR)</p>
+				<p class="fragment fade-in-then-out">Sharpe Ratio</p>
 				<p class="fragment fade-in">Portfolio Beta</p>
+				<p class="fragment highlight-blue">These metrics help evaluate investment performance</p>
 				<aside class="notes">
 					These metrics are fundamental to financial analysis. Each one provides different insights:
 					NPV helps with investment decisions, IRR measures profitability, Sharpe Ratio evaluates
@@ -74,15 +75,17 @@
 			<section>
 				<h2>Financial Formulas</h2>
 				<section>
-					<h3>Net Present Value (NPV)</h3>
-					\[
-					NPV = \sum_{t=0}^{n} \frac{CF_t}{(1+r)^t} - C_0
-					\]
-					<p>Where:</p>
+					<h3 class="fragment fade-in">Net Present Value (NPV)</h3>
+					<p class="fragment fade-in">
+						\[
+						NPV = \sum_{t=0}^{n} \frac{CF_t}{(1+r)^t} - C_0
+						\]
+					</p>
+					<p class="fragment fade-in">Where:</p>
 					<ul>
-						<li>\(CF_t\) = Cash flow at time \(t\)</li>
-						<li>\(r\) = Discount rate</li>
-						<li>\(C_0\) = Initial investment</li>
+						<li class="fragment fade-in">\(CF_t\) = Cash flow at time \(t\)</li>
+						<li class="fragment fade-in">\(r\) = Discount rate</li>
+						<li class="fragment fade-in">\(C_0\) = Initial investment</li>
 					</ul>
 					<aside class="notes">
 						NPV is crucial for investment decisions. A positive NPV means the investment is profitable.
@@ -91,15 +94,17 @@
 				</section>
 
 				<section>
-					<h3>Sharpe Ratio</h3>
-					\[
-					Sharpe\ Ratio = \frac{R_p - R_f}{\sigma_p}
-					\]
-					<p>Where:</p>
+					<h3 class="fragment fade-in">Sharpe Ratio</h3>
+					<p class="fragment fade-up">
+						\[
+						Sharpe\ Ratio = \frac{R_p - R_f}{\sigma_p}
+						\]
+					</p>
+					<p class="fragment fade-in">Where:</p>
 					<ul>
-						<li>\(R_p\) = Portfolio return</li>
-						<li>\(R_f\) = Risk-free rate</li>
-						<li>\(\sigma_p\) = Portfolio standard deviation</li>
+						<li class="fragment fade-in">\(R_p\) = Portfolio return</li>
+						<li class="fragment fade-in">\(R_f\) = Risk-free rate</li>
+						<li class="fragment fade-in">\(\sigma_p\) = Portfolio standard deviation</li>
 					</ul>
 					<aside class="notes">
 						The Sharpe Ratio measures risk-adjusted returns. Higher values indicate better risk-adjusted
@@ -109,16 +114,22 @@
 				</section>
 
 				<section>
-					<h3>Black-Scholes Option Pricing</h3>
-					\[
-					C = S_0 N(d_1) - K e^{-rT} N(d_2)
-					\]
-					\[
-					d_1 = \frac{\ln(S_0/K) + (r + \sigma^2/2)T}{\sigma\sqrt{T}}
-					\]
-					\[
-					d_2 = d_1 - \sigma\sqrt{T}
-					\]
+					<h3 class="fragment fade-in">Black-Scholes Option Pricing</h3>
+					<p class="fragment fade-in">
+						\[
+						C = S_0 N(d_1) - K e^{-rT} N(d_2)
+						\]
+					</p>
+					<p class="fragment fade-up">
+						\[
+						d_1 = \frac{\ln(S_0/K) + (r + \sigma^2/2)T}{\sigma\sqrt{T}}
+						\]
+					</p>
+					<p class="fragment fade-in">
+						\[
+						d_2 = d_1 - \sigma\sqrt{T}
+						\]
+					</p>
 					<aside class="notes">
 						The Black-Scholes model is fundamental to options pricing. It assumes log-normal distribution of
 						stock prices
@@ -129,8 +140,8 @@
 
 			<!-- Code Sample Slide -->
 			<section>
-				<h2>Python Implementation</h2>
-				<pre><code data-trim data-noescape class="python">
+				<h2 class="fragment fade-in">Python Implementation</h2>
+				<pre class="fragment fade-up"><code data-trim data-noescape class="python">
 import numpy as np
 import pandas as pd
 
@@ -165,8 +176,8 @@ print(f"NPV: ${result:.2f}")
 
 			<!-- Code Sample with Fragments -->
 			<section>
-				<h2>Portfolio Analysis</h2>
-				<pre><code data-trim data-noescape class="python">
+				<h2 class="fragment fade-in">Portfolio Analysis</h2>
+				<pre class="fragment fade-up"><code data-trim data-noescape class="python">
 import numpy as np
 from scipy import stats
 
@@ -240,11 +251,11 @@ def portfolio_beta(portfolio_returns, market_returns):
 
 			<!-- Final Slide -->
 			<section>
-				<h2>Thank You!</h2>
-				<p>Questions?</p>
-				<p>
+				<h2 class="fragment fade-in">Thank You!</h2>
+				<p class="fragment fade-up">Questions?</p>
+				<p class="fragment fade-in">
 					<strong>Contact:</strong><br>
-				<h3>24f2002734@ds.study.iitm.ac.in</h3>
+				<h3 class="fragment highlight-blue">24f2002734@ds.study.iitm.ac.in</h3>
 				</p>
 				<p class="fragment fade-in">📊 Data Science | 💰 Finance | 🤖 Machine Learning</p>
 				<aside class="notes">
@@ -266,6 +277,8 @@ def portfolio_beta(portfolio_returns, market_returns):
 		// - https://revealjs.com/config/
 		Reveal.initialize({
 			hash: true,
+			fragments: true,
+			fragmentInURL: true,
 			math: {
 				mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
 				config: 'TeX-AMS_HTML-full'
