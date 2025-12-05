@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Financial Analysis & Data Science Presentation</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- Title Slide -->
+			<section>
+				<h1>Financial Analysis & Data Science</h1>
+				<h3>A Comprehensive Overview</h3>
+				<p>
+					<small>Presented by</small><br>
+					<small>24f2002734@ds.study.iitm.ac.in</small>
+				</p>
+				<aside class="notes">
+					Welcome everyone! Today we'll explore financial analysis through the lens of data science.
+					This presentation covers key financial formulas, code implementations, and analytical techniques.
+				</aside>
+			</section>
+
+			<!-- Markdown Slide -->
+			<section data-markdown>
+				<textarea data-template>
+						## Introduction to Financial Modeling
+
+						Financial modeling combines:
+						
+						- **Quantitative Analysis** - Using mathematical models
+						- **Data Science** - Leveraging large datasets
+						- **Machine Learning** - Predictive analytics
+						- **Risk Management** - Portfolio optimization
+
+						> "The goal is to make data-driven financial decisions"
+					</textarea>
+				<aside class="notes">
+					This slide introduces the core concepts. Financial modeling is essential for modern investment
+					strategies.
+					We'll dive deeper into each component as we progress.
+				</aside>
+			</section>
+
+			<!-- Slide with Fragments -->
+			<section>
+				<h2>Key Financial Metrics</h2>
+				<p class="fragment fade-in">Net Present Value (NPV)</p>
+				<p class="fragment fade-in">Internal Rate of Return (IRR)</p>
+				<p class="fragment fade-in">Sharpe Ratio</p>
+				<p class="fragment fade-in">Portfolio Beta</p>
+				<aside class="notes">
+					These metrics are fundamental to financial analysis. Each one provides different insights:
+					NPV helps with investment decisions, IRR measures profitability, Sharpe Ratio evaluates
+					risk-adjusted returns,
+					and Beta measures market sensitivity.
+				</aside>
+			</section>
+
+			<!-- Mathematical Equations Slide -->
+			<section>
+				<h2>Financial Formulas</h2>
+				<section>
+					<h3>Net Present Value (NPV)</h3>
+					\[
+					NPV = \sum_{t=0}^{n} \frac{CF_t}{(1+r)^t} - C_0
+					\]
+					<p>Where:</p>
+					<ul>
+						<li>\(CF_t\) = Cash flow at time \(t\)</li>
+						<li>\(r\) = Discount rate</li>
+						<li>\(C_0\) = Initial investment</li>
+					</ul>
+					<aside class="notes">
+						NPV is crucial for investment decisions. A positive NPV means the investment is profitable.
+						The discount rate reflects the opportunity cost of capital.
+					</aside>
+				</section>
+
+				<section>
+					<h3>Sharpe Ratio</h3>
+					\[
+					Sharpe\ Ratio = \frac{R_p - R_f}{\sigma_p}
+					\]
+					<p>Where:</p>
+					<ul>
+						<li>\(R_p\) = Portfolio return</li>
+						<li>\(R_f\) = Risk-free rate</li>
+						<li>\(\sigma_p\) = Portfolio standard deviation</li>
+					</ul>
+					<aside class="notes">
+						The Sharpe Ratio measures risk-adjusted returns. Higher values indicate better risk-adjusted
+						performance.
+						A ratio above 1 is generally considered good, above 2 is very good, and above 3 is excellent.
+					</aside>
+				</section>
+
+				<section>
+					<h3>Black-Scholes Option Pricing</h3>
+					\[
+					C = S_0 N(d_1) - K e^{-rT} N(d_2)
+					\]
+					\[
+					d_1 = \frac{\ln(S_0/K) + (r + \sigma^2/2)T}{\sigma\sqrt{T}}
+					\]
+					\[
+					d_2 = d_1 - \sigma\sqrt{T}
+					\]
+					<aside class="notes">
+						The Black-Scholes model is fundamental to options pricing. It assumes log-normal distribution of
+						stock prices
+						and constant volatility. This model revolutionized quantitative finance.
+					</aside>
+				</section>
+			</section>
+
+			<!-- Code Sample Slide -->
+			<section>
+				<h2>Python Implementation</h2>
+				<pre><code data-trim data-noescape class="python">
+import numpy as np
+import pandas as pd
+
+def calculate_npv(cash_flows, discount_rate):
+    """
+    Calculate Net Present Value
+    
+    Parameters:
+    cash_flows: array of cash flows
+    discount_rate: discount rate (as decimal)
+    
+    Returns:
+    NPV value
+    """
+    npv = 0
+    for t, cf in enumerate(cash_flows):
+        npv += cf / (1 + discount_rate) ** t
+    return npv
+
+# Example usage
+cash_flows = [-1000, 300, 400, 500, 600]
+discount_rate = 0.1
+result = calculate_npv(cash_flows, discount_rate)
+print(f"NPV: ${result:.2f}")
+					</code></pre>
+				<aside class="notes">
+					This Python function implements the NPV calculation we saw earlier. Notice how we iterate through
+					each cash flow and discount it appropriately. This is a fundamental building block for financial
+					analysis.
+				</aside>
+			</section>
+
+			<!-- Code Sample with Fragments -->
+			<section>
+				<h2>Portfolio Analysis</h2>
+				<pre><code data-trim data-noescape class="python">
+import numpy as np
+from scipy import stats
+
+def sharpe_ratio(returns, risk_free_rate=0.02):
+    """Calculate Sharpe Ratio"""
+    excess_returns = returns - risk_free_rate
+    return np.mean(excess_returns) / np.std(excess_returns)
+
+def portfolio_beta(portfolio_returns, market_returns):
+    """Calculate portfolio beta"""
+    covariance = np.cov(portfolio_returns, market_returns)[0][1]
+    market_variance = np.var(market_returns)
+    return covariance / market_variance
+					</code></pre>
+				<p class="fragment fade-in">Sharpe Ratio measures risk-adjusted returns</p>
+				<p class="fragment fade-in">Beta indicates market sensitivity</p>
+				<aside class="notes">
+					These functions calculate key portfolio metrics. The Sharpe Ratio helps compare different investment
+					strategies,
+					while Beta helps understand how a portfolio moves relative to the market. Beta of 1 means it moves
+					with the market,
+					greater than 1 means more volatile, less than 1 means less volatile.
+				</aside>
+			</section>
+
+			<!-- Slide with Multiple Fragments -->
+			<section>
+				<h2>Data Science Workflow</h2>
+				<ol>
+					<li class="fragment fade-in">Data Collection</li>
+					<li class="fragment fade-in">Data Cleaning & Preprocessing</li>
+					<li class="fragment fade-in">Exploratory Data Analysis</li>
+					<li class="fragment fade-in">Feature Engineering</li>
+					<li class="fragment fade-in">Model Building</li>
+					<li class="fragment fade-in">Validation & Testing</li>
+					<li class="fragment fade-in">Deployment & Monitoring</li>
+				</ol>
+				<aside class="notes">
+					This workflow is essential for any data science project. Each step builds on the previous one.
+					In financial applications, data quality is paramount - garbage in, garbage out!
+				</aside>
+			</section>
+
+			<!-- Markdown Slide with Code -->
+			<section data-markdown>
+				<textarea data-template>
+						## Machine Learning in Finance
+
+						Common applications:
+
+						- **Algorithmic Trading** - Automated trading strategies
+						- **Credit Risk Assessment** - Loan approval systems
+						- **Fraud Detection** - Anomaly detection
+						- **Price Prediction** - Stock and commodity forecasting
+
+						```python
+						from sklearn.ensemble import RandomForestRegressor
+						
+						model = RandomForestRegressor(n_estimators=100)
+						model.fit(X_train, y_train)
+						predictions = model.predict(X_test)
+						```
+					</textarea>
+				<aside class="notes">
+					Machine learning is transforming finance. Random Forest is just one example - we also use neural
+					networks,
+					support vector machines, and deep learning models. The key is choosing the right model for the
+					problem.
+				</aside>
+			</section>
+
+			<!-- Final Slide -->
+			<section>
+				<h2>Thank You!</h2>
+				<p>Questions?</p>
+				<p>
+					<small>Contact: 24f2002734@ds.study.iitm.ac.in</small>
+				</p>
+				<p class="fragment fade-in">📊 Data Science | 💰 Finance | 🤖 Machine Learning</p>
+				<aside class="notes">
+					Thank you for your attention! Feel free to reach out with questions via email.
+					The intersection of data science and finance is an exciting field with many opportunities.
+				</aside>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/math/math.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			math: {
+				mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
+				config: 'TeX-AMS_HTML-full'
+			},
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath]
+		});
+	</script>
+</body>
+
+</html>
